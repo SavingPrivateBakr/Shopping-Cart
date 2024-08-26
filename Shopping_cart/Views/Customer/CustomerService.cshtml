@@ -1,0 +1,59 @@
+﻿
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        margin: 20px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #3498db;
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .options-container {
+        margin-top: 20px;
+    }
+
+    .option-link {
+        display: inline-block;
+        background-color: #2ecc71;
+        color: #fff;
+        padding: 12px 18px;
+        margin: 8px 5px;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background-color 0.3s;
+    }
+
+        .option-link:hover {
+            background-color: #27ae60;
+        }
+</style>
+
+<div class="container">
+    <h1>Welcome to the <span style="font-weight: bold;">Supermarket Extravaganza!</span></h1>
+    <h1>Discover Your Must-Haves in the <span style="font-style: italic; color: #e74c3c;">Aisle of Wonders</span></h1>
+    <h1>Current Budget: $@Model</h1>
+
+    <div class="options-container">
+        @foreach (var i in Enum.GetValues(typeof(Cl)))
+        {
+            <a asp-action="calculation" asp-controller="Food" asp-route-Id="@((int)i)" asp-route-IDDD="@TempData["id"]" class="option-link">@i</a>
+            <br />
+        }
+    </div>
+</div>
+@{
+    TempData.Keep("id");
+}
